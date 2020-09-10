@@ -17,10 +17,10 @@ variable "gke_num_nodes" {
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
-  
+
   release_channel {
     channel = "RAPID"
-    }
+  }
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -58,7 +58,7 @@ resource "google_container_node_pool" "primary_nodes" {
     preemptible  = true
     machine_type = "n1-standard-1"
     #machine_type = "f1-micro"
-    tags         = ["gke-node", "${var.project_id}-gke"]
+    tags = ["gke-node", "${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }
