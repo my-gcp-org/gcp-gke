@@ -17,7 +17,10 @@ variable "gke_num_nodes" {
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
-  release_channel = "RAPID"
+  
+  release_channel {
+    channel = "RAPID"
+    }
 
   remove_default_node_pool = true
   initial_node_count       = 1
