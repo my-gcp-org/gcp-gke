@@ -17,6 +17,7 @@ variable "gke_num_nodes" {
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
   location = var.region
+  release_channel = "RAPID"
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -40,7 +41,6 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   cluster    = google_container_cluster.primary.name
   node_count = var.gke_num_nodes
-  release_channel = "RAPID"
 
   node_config {
     oauth_scopes = [
