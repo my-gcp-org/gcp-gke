@@ -19,7 +19,7 @@ resource "google_container_cluster" "primary" {
   location = var.region
 
   release_channel {
-    channel = "RAPID"
+    channel = "STABLE"
   }
 
   remove_default_node_pool = true
